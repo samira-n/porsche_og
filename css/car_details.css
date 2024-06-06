@@ -1,0 +1,107 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header img {
+    height: 50px;
+}
+
+header a {
+    text-decoration: none;
+    color: #007bff;
+    margin: 0 15px;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+.hed {
+    display: flex;
+    align-items: center;
+}
+
+.auto_info {
+    padding: 20px;
+}
+
+.auto_info a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.auto_info a:hover {
+    text-decoration: underline;
+}
+
+.car-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.auto_card {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    margin: 20px;
+}
+
+.auto_card img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td {
+    font-size: 16px;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .auto_card {
+        padding: 10px;
+    }
+
+    th, td {
+        font-size: 14px;
+        padding: 10px;
+    }
+}

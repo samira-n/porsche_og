@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Автомобили</title>
+    <link rel="stylesheet" href="../css/cars_style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+    <div class="hed">
+        <a href="profile.html">Профиль</a>
+        <img src="../jpg/txt.PNG">
+        <a href="../php/logout.php">Выйти</a>
+    </div>
+    </header>
+    <h1 class="car_list">Список автомобилей</h1>
+    <div id="cars">
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('../php/check_login.php')
+            .then(response => response.json())
+            .then(data => {
+                if (!data.logged_in) {
+                    window.location.href = 'login.html';
+                } else {
+                    loadCars();
+                }
+            });
+    });
+
+    function loadCars() {
+        fetch('../php/cars.php')
+            .then(response => response.json())
+            .then(data => {
+                const carsDiv = document.getElementById('cars');
+                carsDiv.innerHTML = '';
+                data.forEach(car => {
+                    const carDiv = document.createElement('div');
+                    carDiv.innerHTML = `\
+                        <div class="back">
+                        <img src="../images/${car.image}" alt="${car.model}" width="400" height="250">
+                        <p>Модель: ${car.model}</p>
+                        <p>Цена: ${car.price} руб в день</p>
+                        <p>Статус: ${car.status}</p>
+                        ${car.status === 'Свободен' ? `
+                        <label for="start_date_${car.id}">Дата начала:</label>
+                        <input type="date" id="start_date_${car.id}" required><br>
+                        <label for="end_date_${car.id}">Дата окончания:</label>
+                        <input type="date" id="end_date_${car.id}" required><br>
+                        <button onclick="bookCar(${car.id})">Забронировать</button>` : ''}
+                        <button onclick="showDetails(${car.id})">Подробнее об автомобиле</button>
+                        </div>
+
+                    `;
+                    carsDiv.appendChild(carDiv);
+                });
+            });
+    }
+
+function bookCar(carId) {
+    const startDate = document.getElementById('start_date_' + carId).value;
+    const endDate = document.getElementById('end_date_' + carId).value;
+
+    if (!startDate || !endDate) {
+        alert('Пожалуйста, выберите даты.');
+        return;
+    }
+
+    fetch('../php/book.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ car_id: carId, start_date: startDate, end_date: endDate })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Автомобиль забронирован!');
+            loadCars();
+        } else {
+            alert('Ошибка бронирования: ' + data.message);
+        }
+    });
+}
+
+    function showDetails(carId) {
+        window.location.href = `car_details.html?car_id=${carId}`;
+    }
+</script>
+</div>
+<h3>Для отмены звоните по номеру +7 (968) 986-70-04</h3>
+</html>

@@ -1,0 +1,138 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f0f0f0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.welcome {
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 400px;
+}
+
+.logo1 {
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.logo3{
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.vhod a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    margin: 10px 0;
+}
+
+.vhod a:hover h1 {
+    color: #007bff;
+}
+
+.vhod h1 {
+    font-size: 24px;
+    font-weight: 200;
+    margin: 0;
+}
+
+/* form.stroke{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+form.stroke {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form.stroke label {
+    font-weight: 200;
+    margin: 10px 0 5px 0;
+}
+
+form.stroke input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+    font-size: 16px;
+}
+
+form.stroke button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form.stroke button:hover {
+    background-color: #0056b3;
+}
+
+form.stroke button:active {
+    background-color: #004080;
+}
+
+
+
+@media (min-width: 320px) {
+    .welcome {
+        padding: 30px;
+        width: 60%;
+    }
+}
+
+@media (min-width: 576px) {
+    .welcome {
+        padding: 30px;
+        width: 60%;
+    }
+}
+
+@media (min-width: 768px) {
+    .welcome {
+        padding: 30px;
+        width: 60%;
+    }
+}
+
+@media (min-width: 992px) {
+    .welcome {
+        padding: 30px;
+        width: 60%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .welcome {
+        padding: 30px;
+        width: 60%;
+    }
+    
+}

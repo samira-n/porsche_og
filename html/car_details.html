@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Подробная информация об автомобиле</title>
+    <link rel="stylesheet" href="../css/car_details.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="hed">
+            <a href="profile.html">Профиль</a>
+            <img src="../jpg/txt.PNG" alt="Logo">
+            <a href="../php/logout.php">Выйти</a>
+        </div>
+    </header>
+    <div class="auto_info">
+        <a href="cars.html">Назад к списку автомобилей</a>
+    </div>
+    <div id="carDetails" class="car-details">
+        <!-- Car details will be loaded here -->
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            const carId = params.get('car_id');
+
+            if (carId) {
+                fetch(`../php/car_details.php?car_id=${carId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const carDetailsDiv = document.getElementById('carDetails');
+                        carDetailsDiv.innerHTML = `
+                            <div class="auto_card">
+                                <img src="../images/${data.image}" alt="${data.model}">
+                                <table>
+                                    <tr>
+                                        <td><strong>Модель:</strong></td>
+                                        <td>${data.model}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Цена:</strong></td>
+                                        <td>${data.price} руб в день</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Статус:</strong></td>
+                                        <td>${data.status}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Мощность:</strong></td>
+                                        <td>${data.power} л.с.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Год выпуска:</strong></td>
+                                        <td>${data.release_year}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Описание:</strong></td>
+                                        <td>${data.description}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        `;
+                    });
+            } else {
+                alert('Не указан идентификатор автомобиля.');
+                window.location.href = 'cars.html';
+            }
+        });
+    </script>
+</body>
+</html>

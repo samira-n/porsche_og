@@ -1,0 +1,168 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header img {
+    height: 50px;
+}
+
+header a {
+    text-decoration: none;
+    color: #007bff;
+    margin: 0 15px;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+.car_list {
+    padding-top: 20px;
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    font-size: 35px;
+    color: #333;
+}
+
+#cars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.back {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Скрыть выходящий за пределы контент */
+    height: 500px;
+}
+
+.car img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.car h1 {
+    font-size: 20px;
+    margin: 10px 0;
+    font-weight: 200;
+    color: #333;
+}
+
+.car button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.car button:hover {
+    background-color: #0056b3;
+}
+
+.car button:active {
+    background-color: #004080;
+}
+
+.hed{
+    display: flex;
+    align-items: center;
+}
+
+h3{
+    padding: 20px;
+}
+
+.back button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+}
+
+.back button:hover {
+    background-color: #0056b3;
+}
+
+.back button:active {
+    background-color: #004080;
+}
+
+@media (min-width: 320px) {
+    #cars {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 576px) {
+    #cars {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    header img{
+        height: 30px;
+     }
+}
+
+@media (min-width: 768px) {
+    #cars {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .car_list {
+        font-size: 28px;
+    }
+
+    header a {
+        font-size: 14px;
+        margin: 0 10px;
+    }
+    
+}
+
+@media (min-width: 992px) {
+    #cars {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 1200px) {
+    #cars {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+

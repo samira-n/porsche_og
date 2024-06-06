@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Аренды</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Все аренды автомобилей</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID аренды</th>
+                <th>Имя пользователя</th>
+                <th>Email пользователя</th>
+                <th>Модель автомобиля</th>
+                <th>Цена аренды</th>
+                <th>Дата начала</th>
+                <th>Дата окончания</th>
+            </tr>
+        </thead>
+        <tbody id="rentals"></tbody>
+    </table>
+    <a href="admin.html">Админ панель</a> |
+    <a href="profile.html">Профиль</a> | 
+    <a href="../php/logout.php">Выйти</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('../php/check_admin.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.is_admin) {
+                        window.location.href = 'cars.html';
+                    } else {
+                        loadRentals();
+                    }
+                });
+        });
+
+        function loadRentals() {
+            fetch('../php/admin_rentals.php')
+                .then(response => response.json())
+                .then(data => {
+                    const rentalsTbody = document.getElementById('rentals');
+                    rentalsTbody.innerHTML = '';
+                    data.forEach(rental => {
+                        const rentalRow = document.createElement('tr');
+                        rentalRow.innerHTML = `
+                            <td>${rental.id}</td>
+                            <td>${rental.full_name}</td>
+                            <td>${rental.email}</td>
+                            <td>${rental.model}</td>
+                            <td>${rental.price}</td>
+                            <td>${rental.start_date}</td>
+                            <td>${rental.end_date}</td>
+                        `;
+                        rentalsTbody.appendChild(rentalRow);
+                    });
+                });
+        }
+    </script>
+</body>
+</html>
